@@ -35,7 +35,7 @@ on:
         default: 'recovery'
 
 jobs:
-  build:
+ build:
     if: github.event.repository.owner.id == github.event.sender.id
     runs-on: ubuntu-latest
     permissions:
@@ -49,18 +49,18 @@ jobs:
           - DEVICE_NAME: m31s
           - DEVICE_NAME: a51
     steps:
-      - name: Display Run Parameters
-        run: |
-          echo "::group::User Environment Variables"
-          echo "Manifest URL: ${{ github.event.inputs.MANIFEST_URL }}"
-          echo "Manifest Branch: ${{ github.event.inputs.MANIFEST_BRANCH }}"
-          echo "Device Tree URL: ${{ github.event.inputs.DEVICE_TREE_URL }}"
-          echo "Device Tree Branch: ${{ github.event.inputs.DEVICE_TREE_BRANCH }}"
-          echo "Device Path: ${{ github.event.inputs.DEVICE_PATH }}"
-          echo "Device Name: ${{ matrix.DEVICE_NAME }}"
-          echo "Makefile Name: twrp_${{ matrix.DEVICE_NAME }}"
-          echo "Build Target: ${{ github.event.inputs.BUILD_TARGET }}.img"
-          echo "::endgroup::"
+    - name: Display Run Parameters
+      run: |
+         echo "::group::User Environment Variables"
+         echo "Manifest URL: ${{ github.event.inputs.MANIFEST_URL }}"
+         echo "Manifest Branch: ${{ github.event.inputs.MANIFEST_BRANCH }}"
+         echo "Device Tree URL: ${{ github.event.inputs.DEVICE_TREE_URL }}"
+         echo "Device Tree Branch: ${{ github.event.inputs.DEVICE_TREE_BRANCH }}"
+         echo "Device Path: ${{ github.event.inputs.DEVICE_PATH }}"
+         echo "Device Name: ${{ matrix.DEVICE_NAME }}"
+         echo "Makefile Name: twrp_${{ matrix.DEVICE_NAME }}"
+         echo "Build Target: ${{ github.event.inputs.BUILD_TARGET }}.img"
+         echo "::endgroup::"
 
     # You might want to Checkout your repo first, but not mandatory
     - name: Check Out
